@@ -1,18 +1,27 @@
-import React from "react"
+import React from "react";
 
-function About (props){
-    return(
-        <div>
-            <h1>About</h1>
+// About Me Bio and Tl;Dr
+const About = () => {
+  const tlDr =
+    "I am a developer who focuses on application ranging from the Desktop to the Web";
 
-            <div>
-            <h2>
-    I'm a fledging developer, in the midst of a daunting but exciting career change from 
-    the medical field to the technology realm. 
-    </h2>
-            </div>
-        </div>
-    )
-}
+  const Bio =
+    "My name is Emmet Allen, I am currently working on website applications using technologies such as React, Firebase, Node, and Figma.";
 
-export default About; 
+  const [text, setText] = React.useState(Bio);
+  const handleClick = () => {
+    if (text === tlDr) {
+      setText(Bio);
+    } else {
+      setText(tlDr);
+    }
+  };
+
+  return (
+    <React.Fragment>
+      <h1>{text}</h1>
+      <button onClick={handleClick}>Tl;Dr</button>
+    </React.Fragment>
+  );
+};
+export default About;
