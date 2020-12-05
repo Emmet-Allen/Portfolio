@@ -1,0 +1,37 @@
+@import "./variables";
+
+@mixin flexCenter($direction, $height) {
+  height: $height;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: $direction;
+}
+
+@mixin flexRow($direction, $height) {
+  height: $height;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex: $direction;
+}
+
+@mixin push--auto {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+}
+
+//media-quaries
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+    @if $type == max {
+      $width: $width - 1px;
+    }
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
